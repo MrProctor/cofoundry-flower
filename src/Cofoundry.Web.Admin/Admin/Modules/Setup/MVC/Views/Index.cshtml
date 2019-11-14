@@ -1,0 +1,14 @@
+﻿@inject IAdminRouteLibrary adminRouteLibrary
+@inject IAngularBootstrapper angularBootstrapper
+@{
+    Layout = SetupRouteLibrary.SetupLayoutPath;
+    ViewBag.Title = "Setup";
+}
+
+@section FooterScripts {
+    @await angularBootstrapper.BootstrapAsync(adminRouteLibrary.Setup)
+}
+
+<h1>Cofoundry</h1>
+
+<div class="wrap" ng-view=""></div>

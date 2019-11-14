@@ -1,0 +1,41 @@
+﻿<div ngf-drop
+     ng-show="vm.isEditMode"
+     ngf-change="vm.fileChanged($files, $event)"
+     ngf-accept="'*.*'"
+     ngf-hide-on-drop-not-available="false"
+     ngf-drag-over-class="{accept:'dragover-accepted', reject:'dragover-rejected'}"
+     id="{{vm.modelName}}"
+     name="{{vm.modelName}}"
+     ng-model="vm.ngModel">
+
+    <div ng-if="vm.ngModel">
+        {{vm.ngModel.name}}
+        <span ng-if="vm.ngModel.size">({{vm.ngModel.size | bytes}})</span>
+    </div>
+    <cms-progress-bar load-state="vm.loadState" ng-if="vm.ngModel && !vm.ngModel.isCurrentFile"></cms-progress-bar>
+    <div>
+        <button class="btn-icon" 
+                ngf-select 
+                title="{{vm.buttonText}}"
+                type="button"
+                ngf-change="vm.fileChanged($files, $event)"
+                ngf-accept="'*.*'"
+                ngf-reset-on-click="false"
+                ng-disabled="vm.loadState.isLoading">
+            <i class="fa fa-upload"></i>
+        </button>
+        <button type="button"
+                ng-if="vm.isRemovable"
+                ng-click="vm.remove()"
+                ng-disabled="vm.loadState.isLoading">
+            Remove
+        </button>
+    </div>
+</div>
+<div ng-show="!vm.isEditMode">
+    <div ng-if="vm.ngModel">
+        <a href="{{vm.previewUrl}}">{{vm.ngModel.name}}</a>
+        <span ng-if="vm.ngModel.size">({{vm.ngModel.size | bytes}})</span>
+    </div>
+    <div ng-if="!vm.ngModel"></div>
+</div>

@@ -1,0 +1,171 @@
+<template>
+    <router-link :to="{ name: 'catDetails', params: { id: cat.catId }}" class="cat">
+        <div class="image">
+            <image-asset :image="cat.mainImage" :width="263" :height="263"/>
+        </div>
+        <div class="details">
+            <div class="name">{{ cat.name }}</div>
+            <div class="amount">70 шт</div>
+            <div class="buy">
+                <div class="count">
+                    <button class="minus">-</button>
+                    <div class="count_screen">1</div>
+                    <button class="plus">+</button>
+                </div>
+                <button class="buy_btn">Купить за 3500 Р</button>
+            </div>
+        </div>
+    </router-link>
+</template>
+
+<script>
+import ImageAsset from "@/components/ImageAsset";
+import LikesCounter from "@/components/LikesCounter";
+
+export default {
+    name: "CatItem",
+    components: {
+        ImageAsset,
+        LikesCounter
+    },
+    props: {
+        cat: Object
+    }
+};
+</script>
+
+<style scoped lang="scss">
+.cat {
+    padding:10px;
+    background-color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    text-align: center;
+    
+    .details .buy {
+        display: none;
+        padding:10px;
+    }
+
+    &:hover {
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        .name {
+            color: $color-secondary;
+        }
+
+        .details .buy {
+            display: flex;
+        }
+    }
+    
+}
+
+.image {
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 3px 3px 0 0;
+
+    img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: auto;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        transform-origin: 50% 50%;
+        transition: transform 1s linear;
+        border-radius:20px;
+        width:240px;
+        height:240px;
+    }
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    .name {
+        font-family: Playfair Display;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: center;
+        flex-grow:1;
+        color: #323630;
+    }
+
+    .buy {
+        justify-content: space-between;
+
+        &_btn {
+            width: 130px;
+            height: 40px;
+            background: #FE9C9C;
+            border-radius: 40px;
+            border:none;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 11px;
+            line-height: 13px;
+            text-align: center;
+
+            color: #FFFFFF;
+        }
+    }
+
+    .amount {
+        color: #999999;
+    }
+
+    .likes {
+    }
+
+    @include respond-min(992px) {
+        .likes {
+        }
+
+        .name {
+            display: inline-block;
+        }
+    }
+
+    .count {
+        display: flex;
+        flex-direction: row;
+        width: 100px;
+        height: 40px;
+        border: 1px solid #E4E4E4;
+        box-sizing: border-box;
+        border-radius: 50px;
+        justify-content: space-between;
+        overflow: hidden;
+        .minus {
+            width:30px;
+            border:none;
+            background: #FFFFFF;
+            border-right:1px solid #E4E4E4;
+        }
+        .plus {
+            width:30px;
+            border:none;
+            background: #FFFFFF;
+            border-left:1px solid #E4E4E4;
+        }
+        &_screen {
+            width:50px;
+            font-family: TT Norms;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 17px;
+            text-align: center;
+            color: #999999;
+            align-self: center;
+        }
+    }
+}
+</style>

@@ -1,0 +1,75 @@
+﻿@model AdminMenuViewModel
+@inject IAdminRouteLibrary adminRouteLibrary
+@inject ICofoundryHelper Cofoundry
+
+@{ 
+    var currentUser = await Cofoundry.CurrentUser.GetAsync();
+}
+@functions
+{
+    IHtmlContent ActiveIfCategory(AdminModuleMenuCategory category, string additionalCls = null)
+    {
+        return Cofoundry.Html.TextIf(Model.SelectedCategory == category, "selected");
+    }
+
+    IHtmlContent ActiveIfModule(AdminModule module)
+    {
+        return Cofoundry.Html.TextIf(module == Model.SelectedModule, "active");
+    }
+}
+
+<nav class="main-nav fix">
+    <a href="/" class="home"><i></i></a>
+    <ol class="no-js categories">
+        @if (Model.ManageSiteModules.Any())
+        {
+            <li class="category manage @ActiveIfCategory(AdminModuleMenuCategory.ManageSite)">
+                <a href="@Model.ManageSiteModules.First().Url" class="main-button @ActiveIfCategory(AdminModuleMenuCategory.ManageSite)"><i class="fa fa-pencil"></i> Content</a>
+                <div class="sub-nav">
+                    <div class="results">
+                        <ol>
+                            @foreach (var module in Model.ManageSiteModules)
+                            {
+                                <li class="result @ActiveIfModule(module)">
+                                    <a href="@module.Url" title="@module.Description" @ActiveIfModule(module)>@module.Title</a>
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+            </li>
+        }
+        @if (Model.ManageSiteModules.Any())
+        {
+            <li class="category settings @ActiveIfCategory(AdminModuleMenuCategory.Settings)">
+                <a href="@Model.ManageSiteModules.First().Url" class="main-button @ActiveIfCategory(AdminModuleMenuCategory.Settings)"><i class="fa fa-cog"></i> Settings</a>
+                <div class="sub-nav">
+                    <div class="results">
+                        <ol>
+                            @foreach (var module in Model.SettingsModules)
+                            {
+                                <li class="result @ActiveIfModule(module)">
+                                    <a href="@module.Url" title="@module.Description" @ActiveIfModule(module)>@module.Title</a>
+                                </li>
+                            }
+                        </ol>
+                    </div>
+                </div>
+            </li>
+        }
+    </ol>
+
+    @if (currentUser.IsLoggedIn)
+    {
+        <div class="logout">
+            <a href="@adminRouteLibrary.Auth.LogOut()">Logout</a>
+        </div>
+
+        <div class="view-site">
+            <a href="/" target="_blank">
+                <i class="fa fa-external-link"></i> <span>View website</span>
+            </a>
+        </div>
+    }
+
+</nav>

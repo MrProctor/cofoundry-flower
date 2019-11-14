@@ -1,0 +1,36 @@
+﻿@using System.Reflection
+@inject ICofoundryHelper Cofoundry
+
+@{
+    Layout = LayoutPaths.BaseLayout;
+}
+
+@section Meta
+{
+    @RenderSection("Meta", required: false)
+}
+
+@section Styles
+{
+    @RenderSection("Styles", required: false)
+}
+
+@section HeaderScripts
+{
+    @RenderSection("HeaderScripts", required: false)
+}
+
+@section FooterScripts
+{
+    @RenderSection("FooterScripts", required: false)
+}
+
+<div id="wrapper">
+
+    @RenderBody()
+
+    <footer>
+        <p class="copyright">&copy; @DateTime.Now.Year Cofoundry. All Rights Reserved. Version @Cofoundry.GetType().GetTypeInfo().Assembly.GetName().Version</p>
+    </footer>
+
+</div>

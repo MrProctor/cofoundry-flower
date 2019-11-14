@@ -1,0 +1,52 @@
+﻿@model Cofoundry.Web.Identity.LoginViewModel
+@inject IStaticResourceReferenceRenderer staticResourceReferenceRenderer
+@inject IAdminRouteLibrary adminRouteLibrary
+@inject ICofoundryHelper Cofoundry
+@{
+    ViewBag.Title = "Login";
+    Layout = adminRouteLibrary.Auth.LoginLayoutPath;
+    var returnUrl = Context.Request.Query["ReturnUrl"];
+}
+
+@section FooterScripts
+{
+@staticResourceReferenceRenderer.ScriptTag(adminRouteLibrary.Auth, "Shared")
+}
+
+<h1>Cofoundry</h1>
+
+<div class="wrap">
+    <form method="post" class="form-horizontal" action="@adminRouteLibrary.Auth.Login()" id="MainForm">
+
+        <input name="returnUrl" id="ReturnUrl" type="hidden" value="@returnUrl" />
+        @Html.AntiForgeryToken() 
+        
+        <fieldset>
+            <div class="control-group">
+                <label asp-for="Username" class="control-label">Email</label>
+                <div class="controls">
+                    <input type="email" asp-for="Username" maxlength="150" tabindex="1" />
+                    <span asp-validation-for="Username" class="help-block"></span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label asp-for="Password" class="control-label"></label>
+                <a id="forgotPasswordLink" class="login-alt-cta" href="@adminRouteLibrary.Auth.ForgotPassword()" tabindex="5">Forgotten your password?</a>
+                <div class="controls">
+                    <input type="password" asp-for="Password" tabindex="2" />
+                    <span asp-validation-for="Password" class="help-block"></span>
+                </div>
+            </div>
+
+            <label class="checkbox" for="RememberMe">
+                <input asp-for="RememberMe" class="check" tabindex="3" /> Remember me
+            </label>
+
+            <div class="actions">
+                <input type="submit" class="btn main-cta btn-primary" value="Login" tabindex="4" />
+            </div>
+        </fieldset>
+    </form>
+</div>
+<a href="/" tabindex="6">&lt; Back to @await Cofoundry.Settings.GetApplicationNameAsync()</a>

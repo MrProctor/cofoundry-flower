@@ -1,0 +1,28 @@
+﻿@{
+    Layout = LayoutPaths.BaseLayout;
+}
+
+@section Meta
+{
+    @RenderSection("Meta", required: false)
+}
+
+@section Styles
+{
+    @*@Styles.Render(AuthRouteLibrary.Css.Main)*@
+    @RenderSection("Styles", required: false)
+}
+
+@section HeaderScripts
+{
+    @RenderSection("HeaderScripts", required: false)
+}
+
+@section FooterScripts
+{
+    @RenderSection("FooterScripts", required: false)
+}
+
+<div class="setup-container">
+    @RenderBody()
+</div>

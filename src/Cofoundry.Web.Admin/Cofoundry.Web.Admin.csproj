@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+
+    <PackageId>Cofoundry.Web.Admin</PackageId>
+    <Description>
+      Adds the Cofoundry admin panel to a website.
+    </Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright © Cofoundry.org</Copyright>
+    <PackageTags>Cofoundry Web Admin CMS</PackageTags>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Cofoundry.Web.Admin.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-62925-02" PrivateAssets="All" />
+
+    <PackageReference Include="AngleSharp" Version="0.9.11" />
+    <PackageReference Include="HtmlSanitizer" Version="4.0.199" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cofoundry.Core\Cofoundry.Core.csproj" />
+    <ProjectReference Include="..\Cofoundry.Domain\Cofoundry.Domain.csproj" />
+    <ProjectReference Include="..\Cofoundry.Web\Cofoundry.Web.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Admin\Modules\*\MVC\Views\**\*.cshtml;Admin\Modules\*\MVC\Views\**\*.js;Admin\Modules\*\Content\**\*.*;" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Build\node_modules\**" />
+    <EmbeddedResource Remove="Build\node_modules\**" />
+    <None Remove="Build\node_modules\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Framework\Angular\StandardAngularModules\Routes\Index.cshtml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="Framework\Angular\StandardAngularModules\Routes\Index.cshtml" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Admin\Modules\Auth\Content\js\" />
+  </ItemGroup>
+  
+</Project>

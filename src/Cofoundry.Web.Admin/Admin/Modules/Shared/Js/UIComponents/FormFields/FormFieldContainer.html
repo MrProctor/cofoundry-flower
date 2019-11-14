@@ -1,0 +1,11 @@
+﻿<div class="control-group">
+    <cms-field>
+        <label class="control-label" ng-if="title">{{title}}:</label>
+        <div class="controls">
+            <div ng-transclude></div>
+        </div>
+    </cms-field>
+    <p class="help-inline" ng-if="description">
+        <small>{{description}}</small>
+    </p>
+</div>

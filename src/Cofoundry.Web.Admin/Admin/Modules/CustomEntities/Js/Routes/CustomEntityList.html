@@ -1,0 +1,110 @@
+﻿<!--HEADER-->
+<cms-page-header cms-title="{{::vm.options.name}}"></cms-page-header>
+
+<cms-page-sub-header>
+    <cms-page-header-buttons>
+        <a class="btn-icon" cms-text="Filter"
+           ng-click="vm.toggleFilter()">
+            <i class="fa fa-search"></i>
+        </a>
+
+        <!--FILTER-->
+        <cms-search-filter cms-query="vm.query"
+                           cms-filter="vm.filter"
+                           ng-show="vm.isFilterVisible">
+
+            <cms-form-field-text cms-title="Text"
+                                 cms-model="vm.filter.text"></cms-form-field-text>
+
+            <cms-form-field-locale-selector cms-model="vm.filter.localeId"
+                                            cms-default-item-text="Any"></cms-form-field-locale-selector>
+
+        </cms-search-filter>
+    </cms-page-header-buttons>
+</cms-page-sub-header>
+
+<!--ACTIONS-->
+<cms-page-actions>
+    <cms-button-link class="main-cta"
+                     ng-if="::vm.canCreate"
+                     cms-text="Create"
+                     cms-icon="plus"
+                     cms-href="#/new"></cms-button-link>
+
+    <cms-button cms-text="Change Ordering"
+                ng-if="::vm.canUpdate"
+                ng-click="vm.changeOrdering()"
+                ng-hide="vm.options.ordering === 'None'"></cms-button>
+
+    <cms-pager cms-result="vm.result"
+               cms-query="vm.query"></cms-pager>
+
+</cms-page-actions>
+
+<!--RESULTS-->
+<cms-page-body cms-content-type="form"
+               cms-sub-header="with-header">
+
+    <cms-table-container cms-loading="vm.gridLoadState.isLoading">
+
+        <table>
+            <thead>
+                <tr>
+                    <th ng-if="vm.previewFields.fields.previewImage"></th>
+                    <th ng-if="vm.options.hasLocale">Market</th>
+                    <th>{{::vm.options.terms['title']}}</th>
+                    <th ng-if="vm.previewFields.fields.previewDescription">{{vm.previewFields.fields.previewDescription.displayName}}</th>
+                    <th ng-if="::!vm.options.autoPublish">Status</th>
+                    <th ng-if="::!vm.options.autoPublish">Published</th>
+                    <th class="lowPriority">Created</th>
+                    <th cms-table-column-actions>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-if="!vm.result.items.length">
+                    <td colspan="100" class="empty">Sorry, no {{::vm.options.name.toLowerCase()}} could be found.</td>
+                </tr>
+                <tr ng-repeat="entity in vm.result.items">
+                    <td ng-if="vm.previewFields.fields.previewImage">
+                        <cms-table-cell-image cms-image="vm.gridImages.images[$index]"></cms-table-cell-image>
+                    </td>
+                    <td ng-if="vm.options.hasLocale">
+                        <span ng-if="::entity.locale">{{ ::entity.locale.name }} ({{ ::entity.locale.ietfLanguageTag}})</span>
+                    </td>
+                    <td>
+                        <a href="#/{{::entity.customEntityId}}">{{::entity.title}}</a><br>
+                        <span ng-if="entity.fullPath">{{::entity.fullPath}}</span>
+                    </td>
+                    <td ng-if="vm.previewFields.fields.previewDescription">{{entity.model[vm.previewFields.fields.previewDescription.lowerName]}}</td>
+                    <td ng-if="::!vm.options.autoPublish">
+                        <span>{{::entity.getPublishStatusLabel()}}</span>
+                        <br />
+                        <span ng-if="::entity.hasDraftVersion">(Pending Draft)</span>
+                    </td>
+                    <td ng-if="::!vm.options.autoPublish">
+                        <span ng-if="::entity.publishDate"
+                              title="{{entity.publishDate | date:'fullDate'}} at {{entity.publishDate | date:'HH:mm:ss'}}">{{entity.publishDate | date : 'mediumDate' }} {{entity.publishDate | date : 'HH:mm' }}</span>
+                    </td>
+                    <td class="lowPriority">
+                        <cms-table-cell-created-audit-data cms-audit-data="::entity.auditData"></cms-table-cell-created-audit-data>
+                    </td>
+                    <td cms-table-column-actions>
+                        <a href="#/{{::entity.customEntityId}}"
+                           class="btn-icon"
+                           title="Edit"
+                           ng-if="::vm.canUpdate">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        <a href="{{::entity.fullPath}}"
+                           class="btn-icon"
+                           title="View"
+                           target="_blank"
+                           ng-if="::entity.fullPath">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </cms-table-container>
+</cms-page-body>

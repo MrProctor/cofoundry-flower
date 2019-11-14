@@ -1,0 +1,11 @@
+﻿<div class="control-group" ng-hide="!vm.model">
+    <cms-field>
+        <label class="control-label">{{vm.title}}:</label>
+        <div class="controls">
+            <div class="text-block-display-value">{{vm.model}}</div>
+        </div>
+    </cms-field>
+    <p class="help-inline" ng-if="vm.description">
+        <small>{{vm.description}}</small>
+    </p>
+</div>

@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = LayoutPaths.SharedLayout;
+}
+@section Meta
+{
+    @RenderSection("Meta", required: false)
+}
+
+@section Styles
+{
+    @RenderSection("Styles", required: false)
+}
+
+@section HeaderScripts
+{
+    @RenderSection("HeaderScripts", required: false)
+}
+
+@section FooterScripts
+{
+    @RenderSection("FooterScripts", required: false)
+}
+
+<main id="main">
+
+    @await Component.InvokeAsync(typeof(AdminMenuViewComponent))
+
+    <div class="content">
+
+        @RenderBody()
+
+    </div>
+
+</main>

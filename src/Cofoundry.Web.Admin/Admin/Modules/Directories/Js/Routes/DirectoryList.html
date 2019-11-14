@@ -1,0 +1,23 @@
+﻿<!--HEADER-->
+<cms-page-header cms-title="Directories"></cms-page-header>
+
+<cms-page-actions>
+
+    <cms-button-link class="main-cta"
+                     cms-text="Create"
+                     cms-icon="plus"
+                     cms-href="#/new"
+                     ng-if="::vm.canCreate"></cms-button-link>
+
+    <!--RESULTS-->
+    <cms-pager cms-result="vm.result"
+               cms-query="vm.query"></cms-pager>
+
+</cms-page-actions>
+
+<cms-page-body cms-content-type="form">
+
+    <cms-directory-grid cms-directories="vm.result"
+                        cms-loading="vm.gridLoadState.isLoading"></cms-directory-grid>
+
+</cms-page-body>

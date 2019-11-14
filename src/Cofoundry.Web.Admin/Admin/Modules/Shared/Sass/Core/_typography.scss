@@ -1,0 +1,25 @@
+// This is where we set up the basic and global tyopography rules. 
+
+html {
+    font-family: $fontstack-default;
+    font-size: 80%;
+    line-height: 1.5em;
+}
+
+h2 {
+    font-size:2em;
+    padding-bottom:1em;
+}
+
+h3 {
+    font-size:1.5em;
+    padding:.6em 0;
+}
+
+a {
+    color:$color-secondary;
+}
+
+a:hover {
+    color:$color-secondary-dark;
+}

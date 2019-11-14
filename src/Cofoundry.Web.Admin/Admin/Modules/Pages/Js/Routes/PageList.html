@@ -1,0 +1,132 @@
+﻿<!--HEADER-->
+<cms-page-header cms-title="Pages"></cms-page-header>
+
+<cms-page-sub-header>
+    <cms-page-header-buttons>
+
+        <a class="btn-icon" cms-text="Filter"
+                    ng-click="vm.toggleFilter()">
+            <i class="fa fa-search"></i>
+        </a>
+
+        <!--FILTER-->
+        <cms-search-filter cms-query="vm.query"
+                           cms-filter="vm.filter"
+                           ng-show="vm.isFilterVisible">
+
+            <cms-form-field-text cms-title="Tags"
+                                 cms-model="vm.filter.tags"></cms-form-field-text>
+
+            <cms-form-field-locale-selector cms-model="vm.filter.localeId"
+                                            cms-default-item-text="Any"></cms-form-field-locale-selector>
+
+            <cms-form-field-directory-selector cms-model="vm.filter.pageDirectoryId"
+                                                   cms-default-item-text="Any"></cms-form-field-directory-selector>
+
+            <cms-form-field-dropdown cms-title="Publish Status"
+                                     cms-options="vm.publishStatus"
+                                     cms-option-name="name"
+                                     cms-option-value="name"
+                                     cms-default-item-text="Any"
+                                     cms-model="vm.filter.publishStatus"></cms-form-field-dropdown>
+
+            <cms-form-field-dropdown cms-title="Template"
+                                     cms-options="vm.pageTemplates"
+                                     cms-option-name="name"
+                                     cms-option-value="pageTemplateId"
+                                     cms-default-item-text="Any"
+                                     cms-model="vm.filter.pageTemplateId"></cms-form-field-dropdown>
+
+        </cms-search-filter>
+
+    </cms-page-header-buttons>
+</cms-page-sub-header>
+
+<cms-page-actions>
+
+    <cms-button-link class="main-cta" 
+                     cms-text="Create"
+                     cms-icon="plus"
+                     cms-href="#/new"
+                     ng-if="::vm.canCreate"></cms-button-link>
+
+    <!--RESULTS-->
+    <cms-pager cms-result="vm.result"
+               cms-query="vm.query"></cms-pager>
+
+</cms-page-actions>
+
+<cms-page-body cms-sub-header="with-header"
+               cms-content-type="form">
+    <cms-table-container cms-loading="vm.gridLoadState.isLoading">
+        <table>
+            <thead>
+                <tr>
+                    <th>Page</th>
+                    <!--<th>Market</th>-->
+                    <!--<th>Tags</th>-->
+                    <th>Status</th>
+                    <th>Published</th>
+                    <th>Created</th>
+                    <th cms-table-column-actions>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-if="!vm.result.items.length">
+                    <td colspan="100" class="empty">Sorry, no pages could be found.</td>
+                </tr>
+                <tr ng-repeat="page in vm.result.items">
+                    <td>
+                        <a href="#/{{::page.pageId }}">{{::page.fullPath }}</a><br>
+                        <span>{{::page.title}}</span>
+                    </td>
+                    <!--<td>
+                    <span ng-if="page.locale">{{ page.locale.name }} ({{ page.locale.ietfLanguageTag}})</span>
+                </td>-->
+                    <!--<td>
+                    <cms-tag-list cms-tags="page.tags"></cms-tag-list>
+                </td>-->
+                    <td>
+                        <span>{{::page.getPublishStatusLabel()}}</span>
+                        <br />
+                        <a href="{{::page.fullPath }}" ng-if="::page.hasDraftVersion && page.pageType == 'Generic'">(Pending Draft)</a>
+                        <span ng-if="::page.hasDraftVersion && page.pageType != 'Generic'">(Pending Draft)</span>
+                    </td>
+                    <td>
+                        <span ng-if="::page.publishDate"
+                              title="{{::page.publishDate | date:'fullDate'}} at {{::page.publishDate | date:'HH:mm:ss'}}">{{::page.publishDate | date : 'mediumDate' }} {{::page.publishDate | date : 'HH:mm' }}</span>
+                    </td>
+                    <td class="lowPriority">
+                        <cms-table-cell-created-audit-data cms-audit-data="page.auditData"></cms-table-cell-created-audit-data>
+                    </td>
+                    <td cms-table-column-actions>
+                        <!--<cms-button-icon cms-icon="pencil"
+                         cms-href="#/{{::page.pageId }}"
+                         cms-title="Edit"></cms-button-icon>-->
+                        
+                        <a href=""
+                           ng-if="::!page.isPublished() || page.hasDraftVersion"
+                           ng-click="vm.publish(page.pageId)"
+                           ng-disabled="vm.globalLoadState.isLoading" class="btn-icon" title="Publish">
+                            <i class="fa fa-globe"></i>
+                        </a>
+                        <a href="#/{{::page.pageId }}"
+                           class="btn-icon"
+                           title="Edit"
+                           ng-if="::vm.canUpdate">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        <a href="{{::page.fullPath}}" 
+                           class="btn-icon" 
+                           title="Browse to page" 
+                           target="_blank"
+                           ng-if="::page.pageType == 'Generic'">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </cms-table-container>
+</cms-page-body>

@@ -1,0 +1,17 @@
+﻿@model CustomEntityModuleOptions
+@using Cofoundry.Web.Admin
+@inject IAngularBootstrapper angularBootstrapper
+@inject IAdminRouteLibrary adminRouteLibrary
+
+@{
+    Layout = LayoutPaths.DefaultLayout;
+    ViewBag.Title = Model.Name;
+}
+
+@section FooterScripts {
+    @await angularBootstrapper.BootstrapAsync(adminRouteLibrary.CustomEntities, Model)
+}
+
+<div ng-view=""></div>
+
+
