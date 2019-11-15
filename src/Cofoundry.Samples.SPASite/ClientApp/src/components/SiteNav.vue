@@ -7,7 +7,7 @@
                     <router-link to="/" class="menu-link">Каталог</router-link>
                 </li>
                 <li>
-                    <router-link to="/login" class="menu-link">О компании</router-link>
+                    <router-link to="/company" class="menu-link">О компании</router-link>
                 </li>
                 <li>
                     <router-link to="/login" class="menu-link">Доставка и Оплата</router-link>
@@ -37,6 +37,7 @@ export default {
 <style scoped lang="scss">
 .wrapper {
     background: transparent;
+    background: #F6F7F8;
     position: relative;
     z-index:99;
 }
