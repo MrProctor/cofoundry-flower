@@ -4,27 +4,50 @@
         <div class="hero">
             <div class="up-block">
                 <div class="logo">
-                    О компании
+                    Контакты
                 </div>
                 <div class="intro">
                     <p>Компания “Цветомир” - крупнейший оптовый поставщик цветов в России. 
                         Предлагаем выгодные условия для сотрудничества владельцам цветочных бутиков, флористам и тем, кто готов присоединиться к бизнесу.</p>
                 </div>
             </div>
-            <div><img src="../assets/company-hero.png" /></div>
+            <div class="info-blocks">
+                <div class="block">
+                    <div class="block-image"><img style="margin-top: 21px;" src="../assets/phone.png"/></div>
+                    <div class="header">
+                        Позвонить нам
+                    </div>
+                    <div class="text">
+                        Вы можете позвонить нам по номеру: <strong>8 (937) 625-46-94</strong>
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="block-image"><img style="margin-top: 27px;margin-left: -8px;" src="../assets/message.png"/></div>
+                    <div class="header">
+                        Написать нам
+                    </div>
+                    <div class="text">
+                        Связаться с нами по электронной почте: <strong>info@cvetomir.ru</strong>
+                    </div>
+                </div>
+                <div class="block">
+                    <div style="width:80px;height:80px;margin:0 auto;"><img style="margin-top: -5px;" src="../assets/target.png"/></div>
+                    <div class="header">
+                        Головной офис
+                    </div>
+                    <div class="text">
+                        Головной офис в городе Ижевске находится по адресу: <strong>Ижевск, ул. Новоажимова, 13</strong> 
+                        <p>Схема проезда</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background:#F6F7F8;margin-top: -10px;"><img src="../assets/hero-contacts.png" /></div>
         </div>
 
         <div class="company-story">
-            <div><img src="../assets/flower-heart.png" width="520" hight="400"/></div>
-            <div class="company-text">
-                <p style="margin-top: 0;">Мы начали работу в 1998 году в Ижевске. Тогда в компании работали всего 4 человека. Это был обычный склад площадью 53 квадратных метра с вывеской.
-                     Бизнес развивался стремительно. Перед кризисом 2008 года у нас было 26 торговых точек в Ижевске.</p>
-                <p>Пришел кризис. Он сильно потрепал наш бизнес. Наша модель строилась в сотрудничестве с продуктовой компанией «Айкай».
-                     В 2008 они обанкротились, а мы потеряли 23 торговые точки.
-                     Это был серьёзный удар, но если нести клиентам счастье и позитив, можно пережить любую трудную ситуацию.</p>
-                <p>Компания продолжила существование. Было принято решение изменить подход к бизнесу и постепенно вернуть утраченные позиции.
-                     Если раньше компания перепродавала цветы, купленные у оптовых поставщиков,
-                      то новый формат деятельности предполагал организацию площадей по выращиванию цветов.</p>
+            <div class="grid-header">Как нас найти</div>
+            <div style="width:100%">
+                <iframe style="border: none;width:100%;margin-top:30px;"  src="https://yandex.ru/map-widget/v1/-/CGTHuAkM" width="960" height="450" frameborder="1" allowfullscreen="true"></iframe>
             </div>
         </div>
         <div class="info">
@@ -90,7 +113,7 @@
 <script>
 
 export default {
-    name: "company"
+    name: "contacts"
 };
 </script>
 
@@ -149,11 +172,12 @@ export default {
 .company-story {
     padding: 80px 0;
     display:flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     @include respond-min($tablet) {
         max-width: $layout-max-width;
-        margin: 0 auto 0 auto;
+        margin: 100px auto 0 auto;
     }
 }
 
@@ -283,7 +307,19 @@ export default {
     font-size: 14px;
     line-height: 25px;
     text-align: center;
-    color: #423737;
+    color: #948E8E;;
+}
+
+.block .header {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #323630;
+    max-width:200px;
+    margin:20px auto;
 }
 
 .wrapper {

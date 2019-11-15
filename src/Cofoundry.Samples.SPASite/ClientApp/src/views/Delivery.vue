@@ -2,29 +2,94 @@
     <main>
         <div class="circle-background"></div>
         <div class="hero">
-            <div class="up-block">
-                <div class="logo">
-                    О компании
-                </div>
-                <div class="intro">
-                    <p>Компания “Цветомир” - крупнейший оптовый поставщик цветов в России. 
-                        Предлагаем выгодные условия для сотрудничества владельцам цветочных бутиков, флористам и тем, кто готов присоединиться к бизнесу.</p>
-                </div>
+            <div class="logo">
+                Доставка и оплата
             </div>
-            <div><img src="../assets/company-hero.png" /></div>
+            <div class="intro">
+                <p>Компания “Цветомир” - крупнейший оптовый поставщик цветов в России. 
+                    Предлагаем выгодные условия для сотрудничества владельцам цветочных бутиков, флористам и тем, кто готов присоединиться к бизнесу.</p>
+            </div>
         </div>
 
-        <div class="company-story">
-            <div><img src="../assets/flower-heart.png" width="520" hight="400"/></div>
-            <div class="company-text">
-                <p style="margin-top: 0;">Мы начали работу в 1998 году в Ижевске. Тогда в компании работали всего 4 человека. Это был обычный склад площадью 53 квадратных метра с вывеской.
-                     Бизнес развивался стремительно. Перед кризисом 2008 года у нас было 26 торговых точек в Ижевске.</p>
-                <p>Пришел кризис. Он сильно потрепал наш бизнес. Наша модель строилась в сотрудничестве с продуктовой компанией «Айкай».
-                     В 2008 они обанкротились, а мы потеряли 23 торговые точки.
-                     Это был серьёзный удар, но если нести клиентам счастье и позитив, можно пережить любую трудную ситуацию.</p>
-                <p>Компания продолжила существование. Было принято решение изменить подход к бизнесу и постепенно вернуть утраченные позиции.
-                     Если раньше компания перепродавала цветы, купленные у оптовых поставщиков,
-                      то новый формат деятельности предполагал организацию площадей по выращиванию цветов.</p>
+        <div class="delivery">
+            <div class="info-header">
+                Способы доставки
+            </div>
+            <div class="info-blocks">
+                <div class="block">
+                    <div class="block-image"><img style="margin-top: 22px;margin-left: 6px;" src="../assets/truck.png"/></div>
+                    <div class="header">
+                        Доставка транспортной компанией по РФ
+                    </div>
+                    <div class="text">
+                        Минимальный срок доставки в центральной части России – 1 сутки. В любую другую точку страны – 2 суток.
+                         Это максимально короткие сроки, за которые физически можно сформировать, обработать и направить заказчику партию цветов, используя авиасообщение.
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="block-image" ><img style="margin-top: 11px;" src="../assets/deliver.png"/></div>
+                    <div class="header">
+                        Доставка курьером по городу
+                    </div>
+                    <div class="text">
+                        Минимальный срок доставки в центральной части России – 1 сутки. В любую другую точку страны – 2 суток.
+                         Это максимально короткие сроки, за которые физически можно сформировать, обработать и направить заказчику партию цветов, используя авиасообщение.
+                    </div>
+                </div>
+                <div class="block">
+                    <div style="width:80px;height:80px;margin:0 auto;"><img style="margin-top: -5px;" src="../assets/target.png"/></div>
+                    <div class="header">
+                        Список городов для доставки
+                    </div>
+                    <div class="text">
+                        Москва, Санкт Петербург, Казань, Пермь, Ижевск, Березники, Сыктывкар, Киров, Нижнекамск, Кудымкар 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment">
+            <div class="info-header">
+                Способы оплаты
+            </div>
+            <div class="info-blocks">
+                <div class="block">
+                    <div class="block-image"><img style="margin-top: 26px;" src="../assets/credit-card.png"/></div>
+                    <div class="header">
+                        Банковской картой
+                    </div>
+                    <div class="text">
+                        При выборе формы оплаты с помощью пластиковой карты проведение платежа по заказу производится непосредственно после его оформления.
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="block-image"><img style="margin-top: 10px;" src="../assets/money.png"/></div>
+                    <div class="header">
+                        Наличными
+                    </div>
+                    <div class="text">
+                        При выборе формы оплаты с помощью пластиковой карты проведение платежа по заказу производится непосредственно после его оформления.
+                    </div>
+                </div>
+                <div class="block">
+                    <div class="block-image"><img style="margin-top: 17px;" src="../assets/bank.png"/></div>
+                    <div class="header">
+                        Банковским переводом
+                    </div>
+                    <div class="text">
+                        При выборе формы оплаты с помощью пластиковой карты проведение платежа по заказу производится непосредственно после его оформления. 
+                    </div>
+                </div>
+                <div class="block">
+                    <div style="width:80px;height:80px;margin:0 auto;"><img style="margin-top: -5px;margin-left: -5px;" src="../assets/cancel.png"/></div>
+                    <div class="header">
+                        Отмена заказа
+                    </div>
+                    <div class="text">
+                        При удалении товаров из оплаченного заказа или при аннулировании заказа целиком 
+                        Вы можете заказать другой товар на такую же сумму, либо полностью вернуть всю сумму на карту с помощью Вашего менеджера.
+                    </div>
+                </div>
             </div>
         </div>
         <div class="info">
@@ -90,7 +155,7 @@
 <script>
 
 export default {
-    name: "company"
+    name: "delivery"
 };
 </script>
 
@@ -101,11 +166,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     position: relative;
     z-index:99;
-    background: #F6F7F8;
-    height:450px;
+    background:url("../assets/delivery-hero.png"), #F6F7F8;
+    background-size:cover;
+    height:550px;
     @include respond-min($tablet) {
         padding: 1rem 2rem 0 2rem;
     }
@@ -181,26 +246,6 @@ export default {
     color: #323630;
 }
 
-.circle-background {
-    position:absolute;
-    width: 1954px;
-    height: 1954px;
-    left:-18%;
-    top: -1319px;
-    z-index:0;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #FFEEEE 55.05%, #FFD3D3 100%, #FFCCCD 100%) ;
-    background-image: url("../assets/circle pic.png") no-repeat cover;
-    background-size: cover;
-    display: none;
-    // @media screen and (max-width:$desktop-medium) {
-    //     width: 1954px;
-    //     height: 1954px;
-    //     left:-8%;
-    //     top: -1319px;
-    // }
-}
-
 .catalog_btn {
     background: #FFFFFF;
     box-shadow: 0px 5px 15px rgba(139, 74, 74, 0.15);
@@ -238,6 +283,16 @@ export default {
     background: url("../assets/flower-background1.png") no-repeat;
     padding-bottom: 110px;
     background-size: cover;
+}
+
+.payment {
+    background: #ffffff;
+    padding-bottom: 110px;
+}
+
+.delivery {
+    background: #F6F7F9;
+    padding-bottom: 110px;
 }
 
 .info-blocks {
@@ -284,6 +339,18 @@ export default {
     line-height: 25px;
     text-align: center;
     color: #423737;
+}
+
+.block .header {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #323630;
+    max-width:200px;
+    margin:20px auto;
 }
 
 .wrapper {

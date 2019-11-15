@@ -4,16 +4,16 @@
             <router-link to="/" class="logo">SPA Cats</router-link>
             <ul class="menu">
                 <li>
-                    <router-link to="/" class="menu-link">Каталог</router-link>
+                    <router-link to="/catalog" class="menu-link">Каталог</router-link>
                 </li>
                 <li>
                     <router-link to="/company" class="menu-link">О компании</router-link>
                 </li>
                 <li>
-                    <router-link to="/login" class="menu-link">Доставка и Оплата</router-link>
+                    <router-link to="/delivery" class="menu-link">Доставка и Оплата</router-link>
                 </li>
                 <li>
-                    <router-link to="/register" class="menu-link">Контакты</router-link>
+                    <router-link to="/contacts" class="menu-link">Контакты</router-link>
                 </li>
             </ul>
             <div class="navbar_info">

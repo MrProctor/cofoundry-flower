@@ -16,6 +16,14 @@ export default new Router({
         name: 'company',
         component: () => import(/* webpackChunkName: "Company" */ './views/Company.vue')
     }, {
+        path: '/delivery',
+        name: 'delivery',
+        component: () => import(/* webpackChunkName: "Company" */ './views/Delivery.vue')
+    }, {
+        path: '/contacts',
+        name: 'contacts',
+        component: () => import(/* webpackChunkName: "Company" */ './views/Contacts.vue')
+    }, {
         path: '/cat/:id',
         name: 'catDetails',
         component: () => import(/* webpackChunkName: "CatDetails" */ './views/CatDetails.vue')
