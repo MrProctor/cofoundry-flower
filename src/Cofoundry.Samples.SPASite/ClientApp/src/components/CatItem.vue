@@ -1,18 +1,20 @@
 <template>
-    <div class="cat">
-        <div class="image">
-            <image-asset :image="cat.mainImage" :width="263" :height="263"/>
-        </div>
-        <div class="details">
-            <div class="name">{{ cat.name }}</div>
-            <div class="amount">70 шт</div>
-            <div class="buy">
-                <div class="count">
-                    <button class="minus">-</button>
-                    <div class="count_screen">1</div>
-                    <button class="plus">+</button>
+    <div class="container">
+        <div class="cat">
+            <div class="image">
+                <image-asset :image="cat.mainImage" :width="263" :height="263"/>
+            </div>
+            <div class="details">
+                <div class="name">{{ cat.name }}</div>
+                <div class="amount">70 шт</div>
+                <div class="buy">
+                    <div class="count">
+                        <button class="minus">-</button>
+                        <div class="count_screen">1</div>
+                        <button class="plus">+</button>
+                    </div>
+                    <button class="buy_btn">Купить за 3500 Р</button>
                 </div>
-                <button class="buy_btn">Купить за 3500 Р</button>
             </div>
         </div>
     </div>
@@ -35,13 +37,25 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.container {
+    position:relative;
+   // float:left;
+   display:inline-block;
+    width:280px;
+    height:320px;
+    margin:5px;
+}
+
 .cat {
     padding:10px;
     background-color: #fff;
     border-radius: 3px;
     text-decoration: none;
     text-align: center;
-    
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
     .details .buy {
         display: none;
         padding:10px;
@@ -51,6 +65,7 @@ export default {
         box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
         border-radius: 30px;
         z-index:99;
+        
         .name {
             color: $color-secondary;
         }

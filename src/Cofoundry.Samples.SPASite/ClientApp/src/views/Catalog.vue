@@ -1,12 +1,15 @@
 <template>
     <main>
 
-        <div>CAATALOG</div>
-        <div class="grid-wrapper">
-            <loader :is-loading="loading"/>
-            <div class="grid-header">Более 250 наименований цветов</div>
-            <cat-grid v-if="searchResult" :result="searchResult"/>
-            <button class="catalog_btn-grid">Посмотреть весб каталог</button>
+        <div><span class="colored-header">Каталог</span> <span class="selected-category">Роза Джумилия: 89</span></div>
+        <div class="content">
+            <div class="catalog-menu">
+                MENU
+            </div>
+            <div class="grid-wrapper">
+                <loader :is-loading="loading"/>
+                <cat-grid v-if="searchResult" :result="searchResult"/>
+            </div>
         </div>
         <div class="info">
             <div class="info-header">
@@ -74,7 +77,7 @@ import catsApi from "@/api/cats";
 import Loader from "@/components/Loader";
 
 export default {
-    name: "home",
+    name: "catalog",
     components: {
         CatGrid,
         Loader
@@ -107,52 +110,41 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.hero {
-    padding: 110px 2rem 2rem 2rem;
-    color: #AE9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 25px;
-    text-align: center;
-    position: relative;
-    z-index:99;
-    height: 650px;
-    background: url("../assets/hero-background.png") no-repeat,  #F6F7F8;
-    background-size: cover;
-    @include respond-min($tablet) {
-        padding: 110px 2rem 4rem 2rem;
-    }
-}
-        
-.logo {
-    display: inline-block;
+.colored-header {
     font-family: Playfair Display;
     font-style: normal;
     font-weight: 900;
     font-size: 50px;
     line-height: 67px;
-    color: #000000;
-    text-align: center;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
+    /* identical to box height */
+
+
+    color: #FF7676;
+}
+.selected-category {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 67px;
+    /* identical to box height */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    margin-left:30px;
+    color: #E2E7EC;
 }
 
-.intro {
-    display: inline-block;
-    margin: 1rem 2rem 0 2rem;
-    font-size: 1.2rem;
-    text-align: center;
-    @include respond-min($tablet) {
-        max-width: 45rem;
-    }
+.content {
+    display:flex;
+    flex-direction: row;
+}
+
+.catalog-menu {
+    width:240px;
 }
 
 .grid-wrapper {
+    width:100%;
     margin-top: 70px;
     padding-bottom: 50px;
     @include respond-min($tablet) {
