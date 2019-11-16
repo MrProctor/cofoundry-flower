@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{ name: 'catDetails', params: { id: cat.catId }}" class="cat">
+    <div class="cat">
         <div class="image">
             <image-asset :image="cat.mainImage" :width="263" :height="263"/>
         </div>
@@ -15,7 +15,7 @@
                 <button class="buy_btn">Купить за 3500 Р</button>
             </div>
         </div>
-    </router-link>
+    </div>
 </template>
 
 <script>
@@ -50,6 +50,7 @@ export default {
     &:hover {
         box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
         border-radius: 30px;
+        z-index:99;
         .name {
             color: $color-secondary;
         }

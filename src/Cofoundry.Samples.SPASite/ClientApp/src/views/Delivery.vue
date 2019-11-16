@@ -169,8 +169,8 @@ export default {
     position: relative;
     z-index:99;
     background:url("../assets/delivery-hero.png"), #F6F7F8;
-    background-size:cover;
-    height:550px;
+    background-size:contain;
+    height:450px;
     @include respond-min($tablet) {
         padding: 1rem 2rem 0 2rem;
     }

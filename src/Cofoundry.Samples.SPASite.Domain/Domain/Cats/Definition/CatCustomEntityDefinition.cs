@@ -22,7 +22,7 @@ namespace Cofoundry.Samples.SPASite.Domain
         /// This constant is a convention that allows us to reference this definition code 
         /// in other parts of the application (e.g. querying)
         /// </summary>
-        public const string DefinitionCode = "SHOPAP";
+        public const string DefinitionCode = "SPACAT";
 
         /// <summary>
         /// Unique 6 letter code representing the module (the convention is to use uppercase)
