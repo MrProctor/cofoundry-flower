@@ -4,7 +4,7 @@
         <div><span class="colored-header">Каталог</span> <span class="selected-category">Роза Джумилия: 89</span></div>
         <div class="content">
             <div class="catalog-menu">
-                MENU
+                <category-list v-if="searchResult" :result="categoryList"/>
             </div>
             <div class="grid-wrapper">
                 <loader :is-loading="loading"/>
@@ -73,34 +73,47 @@
 
 <script>
 import CatGrid from "@/components/CatGrid";
+import CategoryList from "@/components/CategoryList";
 import catsApi from "@/api/cats";
+import categoriesApi from "@/api/categories";
 import Loader from "@/components/Loader";
 
 export default {
     name: "catalog",
     components: {
         CatGrid,
+        CategoryList,
         Loader
     },
     data() {
         return {
             loading: false,
-            searchResult: null
+            searchResult: null,
+            categoryList: null
         };
     },
     created() {
         this.loadGrid();
+        this.loadCategories();
     },
     watch: {
         $route: "loadGrid"
     },
     methods: {
         loadGrid() {
-            this.loading = false;
+            this.loading = true;
 
             catsApi.searchCats().then(result => {
                 this.loading = false;
                 this.searchResult = result;
+            }).catch(x=> {
+
+            });
+        },
+
+        loadCategories() {
+            categoriesApi.searchCategories().then(result => {
+                this.categoryList = result;
             }).catch(x=> {
 
             });

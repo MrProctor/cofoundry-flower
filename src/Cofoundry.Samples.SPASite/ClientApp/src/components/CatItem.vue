@@ -39,8 +39,6 @@ export default {
 <style scoped lang="scss">
 .container {
     position:relative;
-   // float:left;
-   display:inline-block;
     width:280px;
     height:320px;
     margin:5px;

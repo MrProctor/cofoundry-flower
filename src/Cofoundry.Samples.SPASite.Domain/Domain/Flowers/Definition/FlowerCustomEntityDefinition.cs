@@ -14,15 +14,15 @@ namespace Cofoundry.Samples.SPASite.Domain
     /// This definition uses ICustomisedTermCustomEntityDefinition to change
     /// the display name for the title property to be 'Name'.
     /// </summary>
-    public class CatCustomEntityDefinition 
-        : ICustomEntityDefinition<CatDataModel>
+    public class FlowerCustomEntityDefinition 
+        : ICustomEntityDefinition<FlowerDataModel>
         , ICustomizedTermCustomEntityDefinition
     {
         /// <summary>
         /// This constant is a convention that allows us to reference this definition code 
         /// in other parts of the application (e.g. querying)
         /// </summary>
-        public const string DefinitionCode = "SPACAT";
+        public const string DefinitionCode = "SPAFLO";
 
         /// <summary>
         /// Unique 6 letter code representing the module (the convention is to use uppercase)
@@ -32,18 +32,18 @@ namespace Cofoundry.Samples.SPASite.Domain
         /// <summary>
         /// Singlar name of the entity
         /// </summary>
-        public string Name => "Cat";
+        public string Name => "Flower";
 
         /// <summary>
         /// Plural name of the entity
         /// </summary>
-        public string NamePlural => "Cats";
+        public string NamePlural => "Flowers";
 
         /// <summary>
         /// A short description that shows up as a tooltip for the admin 
         /// panel.
         /// </summary>
-        public string Description => "Cats shop";
+        public string Description => "Flowers shop";
 
         /// <summary>
         /// Indicates whether the UrlSlug property should be treated
