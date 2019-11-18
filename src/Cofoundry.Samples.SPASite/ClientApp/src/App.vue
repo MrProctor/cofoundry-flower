@@ -2,6 +2,7 @@
     <div class="site-wrapper">
         <site-nav/>
         <router-view/>
+        <site-footer/>
     </div>
 </template>
 

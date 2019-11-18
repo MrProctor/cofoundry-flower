@@ -1,7 +1,7 @@
 import axios from 'axios'
 import axiosHelper from '@/api/axiosHelper'
 
-const BASE_URI = 'http://localhost:58139/api/cats/';
+const BASE_URI = 'http://localhost:58139/api/cats?PageNumber=1&PageSize=5';
 
 export default {
     searchCats() {
