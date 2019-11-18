@@ -23,5 +23,7 @@ namespace Cofoundry.Samples.SPASite.Domain
         public RootCategory RootCategory { get; set; }
 
         public ImageAssetRenderDetails MainImage { get; set; }
+
+        public bool isSelected { get; set; } = false;
     }
 }

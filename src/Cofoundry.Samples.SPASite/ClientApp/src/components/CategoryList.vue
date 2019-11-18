@@ -3,7 +3,9 @@
         <div v-for="root in result" :key="root.Name" 
         v-on:click="toggleCategory(root)">
             <div class="root-cat">
-                <img class="shevron" src="../assets/chevron_right.png"/><span class="root-name">{{root.name}}</span>
+                <img class="shevron" src="../assets/chevron_down_grey.png" v-if="!root.isShow"/>
+                <img class="shevron" src="../assets/chevron_up_pink.png" v-if="root.isShow"/>
+                <span class="root-name">{{root.name}}</span>
             </div>
             <div v-show="root.isShow" v-for="cat in root.categories" :key="cat.categoryId">
                 <div class="cat-name">{{cat.name}}</div>
@@ -61,7 +63,7 @@ color: #323630;
 }
 
 .shevron {
-    width:5px;
+    width:8px;
     height: 5px;
 }
 

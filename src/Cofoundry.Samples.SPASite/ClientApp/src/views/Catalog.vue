@@ -1,14 +1,17 @@
 <template>
     <main>
 
-        <div><span class="colored-header">Каталог</span> <span class="selected-category">Роза Джумилия: 89</span></div>
+        <div style="margin-top:30px;"><span class="colored-header">Каталог</span> <span class="selected-category">Роза Джумилия: 89</span></div>
         <div class="content">
             <div class="catalog-menu">
                 <category-list v-if="searchResult" :result="categoryList"/>
             </div>
             <div class="grid-wrapper">
-                <loader :is-loading="loading"/>
+                <loader :is-loading="loading"/>              
+                <paging />
                 <cat-grid v-if="searchResult" :result="searchResult"/>
+                <hr style="opacity: 0.3;">
+                <paging />
             </div>
         </div>
         <div class="info">
@@ -74,6 +77,7 @@
 <script>
 import CatGrid from "@/components/CatGrid";
 import CategoryList from "@/components/CategoryList";
+import Paging from "@/components/Paging";
 import catsApi from "@/api/cats";
 import categoriesApi from "@/api/categories";
 import Loader from "@/components/Loader";
@@ -83,7 +87,8 @@ export default {
     components: {
         CatGrid,
         CategoryList,
-        Loader
+        Loader,
+        Paging
     },
     data() {
         return {
@@ -131,7 +136,6 @@ export default {
     line-height: 67px;
     /* identical to box height */
 
-
     color: #FF7676;
 }
 .selected-category {
@@ -178,26 +182,6 @@ export default {
     text-align: center;
 
     color: #323630;
-}
-
-.circle-background {
-    position:absolute;
-    width: 1954px;
-    height: 1954px;
-    left:-18%;
-    top: -1319px;
-    z-index:0;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #FFEEEE 55.05%, #FFD3D3 100%, #FFCCCD 100%) ;
-    background-image: url("../assets/circle pic.png") no-repeat cover;
-    background-size: cover;
-    display: none;
-    // @media screen and (max-width:$desktop-medium) {
-    //     width: 1954px;
-    //     height: 1954px;
-    //     left:-8%;
-    //     top: -1319px;
-    // }
 }
 
 .catalog_btn {
