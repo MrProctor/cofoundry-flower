@@ -1,6 +1,6 @@
 <template>
     <main>
-
+        <offer-dialog />
         <div style="margin-top:30px;"><span class="colored-header">Каталог</span> <span class="selected-category">Роза Джумилия: 89</span></div>
         <div class="content">
             <div class="catalog-menu">
@@ -8,13 +8,12 @@
             </div>
             <div class="grid-wrapper">
                 <loader :is-loading="loading"/>              
-                <paging />
+                <paging v-if="info" :pagingInfo="info" @loadFilteredGrid="loadGrid"/>
                 <cat-grid v-if="searchResult" :result="searchResult"/>
                 <hr style="opacity: 0.3;">
-                <paging />
+                <paging v-if="info" :pagingInfo="info" @loadFilteredGrid="loadGrid"/>
             </div>
         </div>
-
     </main>
 </template>
 
@@ -25,6 +24,7 @@ import Paging from "@/components/Paging";
 import catsApi from "@/api/cats";
 import categoriesApi from "@/api/categories";
 import Loader from "@/components/Loader";
+import OfferDialog from "@/components/OfferDialog";
 
 export default {
     name: "catalog",
@@ -32,13 +32,20 @@ export default {
         CatGrid,
         CategoryList,
         Loader,
-        Paging
+        Paging,
+        OfferDialog
     },
     data() {
         return {
             loading: false,
             searchResult: null,
-            categoryList: null
+            categoryList: null,
+            info: {
+                pageSize: 30,
+                pageNumber: 1,
+                pageCount: 1,
+                totalItems: 0
+            }
         };
     },
     created() {
@@ -49,14 +56,19 @@ export default {
         $route: "loadGrid"
     },
     methods: {
-        loadGrid() {
+        loadGrid(pageSize, pageNumber) {
             this.loading = true;
-
-            catsApi.searchCats().then(result => {
+            catsApi.searchCats(pageSize, pageNumber).then(result => {
                 this.loading = false;
                 this.searchResult = result;
+                this.info = {
+                    pageSize: result.pageSize,
+                    pageNumber: result.pageNumber,
+                    pageCount: result.pageCount,
+                    totalItems: result.totalItems
+                }
             }).catch(x=> {
-
+                console.log(x)
             });
         },
 

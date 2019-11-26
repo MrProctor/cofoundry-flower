@@ -1,12 +1,13 @@
 import axios from 'axios'
 import axiosHelper from '@/api/axiosHelper'
 
-const BASE_URI = 'http://localhost:58139/api/cats?PageNumber=1&PageSize=5';
+const BASE_URI = 'http://localhost:58139/api/flowers';
 
 export default {
-    searchCats() {
+    searchCats(pageSize = 30,  pageNumber = 1) {
+        let url = BASE_URI + `?PageNumber=${pageNumber}&PageSize=${pageSize}`
         return axios
-            .get(BASE_URI)
+            .get(url)
             .then(axiosHelper.handleQueryResponse);
     },
 

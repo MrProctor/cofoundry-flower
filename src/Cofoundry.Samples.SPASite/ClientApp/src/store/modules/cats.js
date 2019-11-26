@@ -4,7 +4,16 @@ import catsApi from '@/api/cats';
 export default {
     namespaced: true,
     state: {
-        likedCatIds: []
+        likedCatIds: [],
+        pageSize: 30,
+        dialogOpen: false,
+        flowerInfo: {
+            id: null,
+            name: null,
+            category: null,
+            amount: null,
+            price: null
+        }
     },
     mutations: {
         setLikedCatIds(state, catIds) {
@@ -15,7 +24,24 @@ export default {
         },
         setCatUnliked(state, catId) {
             state.likedCatIds = state.likedCatIds.filter(id => id !== catId);
+        },
+        setPageSize(state, pageSize) {
+            state.pageSize = pageSize
+        },
+        setDialogOpen(state) {
+            state.dialogOpen = true
+        },
+        setDialogClose(state) {
+            state.dialogOpen = false
+        },
+        setFlowerInfo(state, flowerInfo) {
+            state.flowerInfo.id = flowerInfo.id
+            state.flowerInfo.name = flowerInfo.name
+            state.flowerInfo.category = flowerInfo.category
+            state.flowerInfo.amount = flowerInfo.amount
+            state.flowerInfo.price = flowerInfo.price
         }
+
     },
     actions: {
         loadSession(context) {
@@ -46,6 +72,30 @@ export default {
             return catsApi.unlike(catId).then(() => {
                 context.commit('setCatUnliked', catId);
             });
+        },
+
+        changePageSize(context, pageSize) {
+            context.commit('setPageSize', pageSize)
+
+            return Promise.resolve();
+        },
+
+        openDialog(context) {
+            context.commit('setDialogOpen')
+
+            return Promise.resolve();
+        },
+
+        closeDialog(context) {
+            context.commit('setDialogClose')
+
+            return Promise.resolve();
+        },
+
+        changeFlowerInfo(context, flowerInfo) {
+            context.commit('setFlowerInfo', flowerInfo)
+
+            return Promise.resolve();
         }
     }
 }

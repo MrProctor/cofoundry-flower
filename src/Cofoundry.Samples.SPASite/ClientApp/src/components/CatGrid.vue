@@ -1,6 +1,6 @@
 <template>
     <div class="grid" v-if="result">
-        <cat-item v-for="cat in result.items" :cat="cat" :key="cat.catId"/>
+        <cat-item v-for="flower in result.items" :flower="flower" :key="flower.flowerId"/>
     </div>
 </template>
 

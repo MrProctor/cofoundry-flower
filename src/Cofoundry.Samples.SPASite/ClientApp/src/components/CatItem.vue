@@ -2,10 +2,10 @@
     <div class="container">
         <div class="cat">
             <div class="image">
-                <image-asset :image="cat.mainImage" :width="263" :height="263"/>
+                <image-asset :image="flower.mainImage" :width="263" :height="263"/>
             </div>
             <div class="details">
-                <div class="name">{{ cat.name }}</div>
+                <div class="name">{{ flower.name }}</div>
                 <div class="amount">70 шт</div>
                 <div class="buy">
                     <div class="count">
@@ -13,7 +13,7 @@
                         <div class="count_screen">1</div>
                         <button class="plus">+</button>
                     </div>
-                    <button class="buy_btn">Купить за 3500 Р</button>
+                    <button class="buy_btn" v-on:click="openPopup()">Купить за 3500 Р</button>
                 </div>
             </div>
         </div>
@@ -31,7 +31,20 @@ export default {
         LikesCounter
     },
     props: {
-        cat: Object
+        flower: Object
+    },
+    methods: {
+        openPopup() {
+            let flowerInfo = {
+                id: this.flower.flowerId,
+                name: this.flower.name,
+                category: this.flower.category,
+                amount: this.flower.count,
+                price: this.flower.price
+            }
+            this.$store.dispatch('cats/changeFlowerInfo', flowerInfo)
+            this.$store.dispatch('cats/openDialog')
+        }
     }
 };
 </script>
@@ -126,7 +139,7 @@ export default {
             font-size: 11px;
             line-height: 13px;
             text-align: center;
-
+            cursor:pointer;
             color: #FFFFFF;
         }
     }

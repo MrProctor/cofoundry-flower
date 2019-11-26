@@ -1,23 +1,27 @@
 <template>
     <div class="paging-block">
-                    <div class="page-size-block">
+                    <div class="page-size-block" v-on:click="toggleDropdown()">
                         <div class="page-size-label">Показывать по:</div>
-                        <div class="page-size">30</div>
+                        <div class="page-size">
+                            <span>{{pageSize}}</span>
+                            <div class="dropdown-block" v-show="isShow">
+                                <ul class="dropdown">
+                                    <li v-on:click="changePageSize(5)">5</li>
+                                    <li v-on:click="changePageSize(10)">10</li>
+                                    <li v-on:click="changePageSize(20)">20</li>
+                                    <li v-on:click="changePageSize(30)">30</li>
+                                    <li v-on:click="changePageSize(50)">50</li>
+                                </ul>
+                            </div>
+                        </div>
                         <div><img class="shevron" src="../assets/chevron_down_grey.png" style="vertical-align: middle;margin-top: -3px;"/></div>
                     </div>
                     <div class="page-list">
-                        <div> <img class="shevron_page" src="../assets/chevron_left_grey.png"/> </div>
+                        <div v-on:click="loadPagingGrid"> <img class="shevron_page" src="../assets/chevron_left_grey.png" v-on:click="loadPagingGrid(pageSize, pagingInfo.pageNumber-1)"/> </div>
                         <ul class="pages">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
-                            <li>6</li>
-                            <li>7</li>
-                            <li>8</li>
+                            <li v-for="index in pagingInfo.pageCount" :key="index" v-bind:class="{colored: index===pagingInfo.pageNumber}" v-on:click="loadPagingGrid(pageSize, index)">{{index}}</li>
                         </ul>
-                        <div> <img class="shevron_page" src="../assets/chevron_right_grey.png"/> </div>
+                        <div v-on:click="loadPagingGrid(pageSize, pagingInfo.pageNumber+1)"> <img class="shevron_page" src="../assets/chevron_right_grey.png"/> </div>
                     </div>
                     
                 </div>
@@ -28,8 +32,33 @@
 export default {
     name: "Paging",
     props: {
-        result: Array
+        pagingInfo: Object,
     },
+    data() {
+        return {
+            isShow: false
+        }
+    },
+    computed: {
+        pageSize() {
+            return this.$store.state.cats.pageSize
+        }
+    },
+    methods: {
+        loadPagingGrid(pageSize, pageNumber) {
+            if (pageSize < 1 || pageNumber < 1 || pageNumber > this.pagingInfo.pageCount) {
+                return;
+            }
+            this.$emit('loadFilteredGrid', pageSize, pageNumber)
+        },
+        toggleDropdown() {
+            this.isShow = !this.isShow
+        },
+        changePageSize(pageSize) {
+            this.loadPagingGrid(pageSize, 1)
+            this.$store.dispatch('cats/changePageSize', pageSize)
+        }
+    }
 };
 </script>
 
@@ -44,6 +73,7 @@ export default {
 .page-size {
     width:20px;
     margin-right:5px;
+    position:relative;
 }
 
 .page-size-block {
@@ -52,6 +82,31 @@ export default {
     width:150px;
     margin-left:4rem;
     align-items: center;
+    cursor:pointer;
+}
+
+.colored {
+    color:  #FF7676 !important;
+}
+
+.dropdown-block {
+    position:absolute;
+    top:25px;
+    left: -6px;
+    border: 1px solid #ccc;
+    border-top: none;
+    background:#fff;
+    z-index:200;
+}
+
+.dropdown {
+    list-style: none;
+    padding:0;
+    margin:5px;
+}
+
+.dropdown li {
+    text-align: center;
 }
 
 .page-size-label {
