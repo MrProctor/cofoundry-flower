@@ -4,12 +4,12 @@
         <div style="margin-top:30px;"><span class="colored-header">Каталог</span> <span class="selected-category">Роза Джумилия: 89</span></div>
         <div class="content">
             <div class="catalog-menu">
-                <category-list v-if="searchResult" :result="categoryList"/>
+                <category-list :result="categoryList"/>
             </div>
             <div class="grid-wrapper">
                 <loader :is-loading="loading"/>              
                 <paging v-if="info" :pagingInfo="info" @loadFilteredGrid="loadGrid"/>
-                <cat-grid v-if="searchResult" :result="searchResult"/>
+                <cat-grid />
                 <hr style="opacity: 0.3;">
                 <paging v-if="info" :pagingInfo="info" @loadFilteredGrid="loadGrid"/>
             </div>
@@ -60,7 +60,7 @@ export default {
             this.loading = true;
             catsApi.searchCats(pageSize, pageNumber).then(result => {
                 this.loading = false;
-                this.searchResult = result;
+                this.$store.dispatch('cats/changeFlowersList', result.items)
                 this.info = {
                     pageSize: result.pageSize,
                     pageNumber: result.pageNumber,

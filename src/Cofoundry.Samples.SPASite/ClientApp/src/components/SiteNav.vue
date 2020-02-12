@@ -4,16 +4,16 @@
             <router-link to="/" class="logo">SPA Cats</router-link>
             <ul class="menu">
                 <li>
-                    <router-link to="/catalog" class="menu-link">Каталог</router-link>
+                    <router-link to="/catalog" class="menu-link" v-bind:class="{colored: $route.path==='/catalog'}">Каталог</router-link>
                 </li>
                 <li>
-                    <router-link to="/company" class="menu-link">О компании</router-link>
+                    <router-link to="/company" class="menu-link" v-bind:class="{colored: $route.path==='/company'}">О компании</router-link>
                 </li>
                 <li>
-                    <router-link to="/delivery" class="menu-link">Доставка и Оплата</router-link>
+                    <router-link to="/delivery" class="menu-link" v-bind:class="{colored: $route.path==='/delivery'}">Доставка и Оплата</router-link>
                 </li>
                 <li>
-                    <router-link to="/contacts" class="menu-link">Контакты</router-link>
+                    <router-link to="/contacts" class="menu-link" v-bind:class="{colored: $route.path==='/contacts'}">Контакты</router-link>
                 </li>
             </ul>
             <div class="navbar_info">
@@ -29,8 +29,9 @@ import { mapState, mapActions } from "vuex";
 
 export default {
     name: "SiteNav",
+
     computed: mapState("auth", ["member"]),
-    methods: mapActions("auth", ["signOut"])
+    methods: mapActions("auth", ["signOut"]),
 };
 </script>
 
@@ -56,6 +57,10 @@ export default {
     }
 }
 
+.colored {
+    color: #FF7676 !important;
+}
+
 .menu {
     list-style-type: none;
     margin: 0;
@@ -69,7 +74,6 @@ export default {
         display: inline-block;
         background-color: transparent;
         border: 0;
-        color: #000;
         padding: 0.5rem 1rem;
         margin: 0.5rem 0;
         text-decoration: none;
@@ -79,7 +83,7 @@ export default {
         font-weight: normal;
         font-size: 16px;
         line-height: 20px;
-        color: #8B7575;
+        color: #2F2B2B;
     }
 
     @include respond-min($tablet) {

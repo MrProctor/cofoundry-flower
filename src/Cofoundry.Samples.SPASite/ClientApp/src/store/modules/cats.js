@@ -13,7 +13,8 @@ export default {
             category: null,
             amount: null,
             price: null
-        }
+        },
+        flowers: []
     },
     mutations: {
         setLikedCatIds(state, catIds) {
@@ -40,6 +41,9 @@ export default {
             state.flowerInfo.category = flowerInfo.category
             state.flowerInfo.amount = flowerInfo.amount
             state.flowerInfo.price = flowerInfo.price
+        },
+        setFlowersList(state, flowers) {
+            state.flowers = flowers
         }
 
     },
@@ -94,6 +98,11 @@ export default {
 
         changeFlowerInfo(context, flowerInfo) {
             context.commit('setFlowerInfo', flowerInfo)
+
+            return Promise.resolve();
+        },
+        changeFlowersList(context, flowers) {
+            context.commit('setFlowersList', flowers)
 
             return Promise.resolve();
         }

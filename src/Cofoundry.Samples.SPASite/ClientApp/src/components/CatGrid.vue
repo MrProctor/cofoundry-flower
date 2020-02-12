@@ -1,6 +1,6 @@
 <template>
-    <div class="grid" v-if="result">
-        <cat-item v-for="flower in result.items" :flower="flower" :key="flower.flowerId"/>
+    <div class="grid">
+        <cat-item v-for="flower in flowers" :flower="flower" :key="flower.flowerId"/>
     </div>
 </template>
 
@@ -12,8 +12,10 @@ export default {
     components: {
         CatItem
     },
-    props: {
-        result: Object
+    computed: {
+        flowers() {
+            return this.$store.state.cats.flowers
+        }
     }
 };
 </script>

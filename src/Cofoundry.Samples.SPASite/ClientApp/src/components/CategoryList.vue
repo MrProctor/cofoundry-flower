@@ -7,19 +7,22 @@
                 <img class="shevron" src="../assets/chevron_up_pink.png" v-if="root.isShow"/>
                 <span class="root-name">{{root.name}}</span>
             </div>
-            <div v-show="root.isShow" v-for="cat in root.categories" :key="cat.categoryId">
-                <div class="cat-name">{{cat.name}}</div>
+            <div v-show="root.isShow" v-for="cat in root.categories" :key="cat.categoryId" v-on:click.stop="toggleCategory">
+                <div class="cat-name" v-on:click="loadGrid(pageSize, 1, cat.categoryId)">{{cat.name}}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import catsApi from "@/api/cats";
 
 export default {
     name: "CategoryList",
-    data: ()=> {
-        return {isHidden:true}
+    data() {
+        return {
+            pageSize: this.$store.state.cats.pageSize
+            }
     },
     props: {
         result: Array
@@ -27,6 +30,21 @@ export default {
     methods: {
         toggleCategory: function(root){
             root.isShow = root.isShow ? false : true;
+        },
+        loadGrid(pageSize, pageNumber, categoryId) {
+            this.loading = true;
+            catsApi.searchCats(pageSize, pageNumber, categoryId).then(result => {
+                this.loading = false;
+                this.$store.dispatch('cats/changeFlowersList', result.items)
+                this.info = {
+                    pageSize: result.pageSize,
+                    pageNumber: result.pageNumber,
+                    pageCount: result.pageCount,
+                    totalItems: result.totalItems
+                }
+            }).catch(x=> {
+                console.log(x)
+            });
         }
       }
 };

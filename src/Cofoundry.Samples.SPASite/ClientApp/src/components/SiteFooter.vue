@@ -35,16 +35,16 @@
             <div class="container">
             <ul class="menu">
                 <li>
-                    <router-link to="/catalog" class="menu-link">Каталог</router-link>
+                    <router-link to="/catalog" class="menu-link" v-bind:class="{colored: $route.path==='/catalog'}" >Каталог</router-link>
                 </li>
                 <li>
-                    <router-link to="/company" class="menu-link">О компании</router-link>
+                    <router-link to="/company" class="menu-link" v-bind:class="{colored: $route.path==='/company'}">О компании</router-link>
                 </li>
                 <li>
-                    <router-link to="/delivery" class="menu-link">Доставка и Оплата</router-link>
+                    <router-link to="/delivery" class="menu-link" v-bind:class="{colored: $route.path==='/delivery'}">Доставка и Оплата</router-link>
                 </li>
                 <li>
-                    <router-link to="/contacts" class="menu-link">Контакты</router-link>
+                    <router-link to="/contacts" class="menu-link" v-bind:class="{colored: $route.path==='/contacts'}">Контакты</router-link>
                 </li>
             </ul>
             <div class="links">
@@ -133,6 +133,10 @@ export default {
     justify-content: space-around;
     max-width: $layout-max-width;
     margin: 0 auto;
+}
+
+.colored {
+    color: #FF7676 !important;
 }
 
 .menu {

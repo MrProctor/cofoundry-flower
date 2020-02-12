@@ -6,14 +6,14 @@
             </div>
             <div class="details">
                 <div class="name">{{ flower.name }}</div>
-                <div class="amount">70 шт</div>
+                <div class="amount">{{flower.count}} шт</div>
                 <div class="buy">
                     <div class="count">
                         <button class="minus">-</button>
                         <div class="count_screen">1</div>
                         <button class="plus">+</button>
                     </div>
-                    <button class="buy_btn" v-on:click="openPopup()">Купить за 3500 Р</button>
+                    <button class="buy_btn" v-on:click="openPopup()">Купить за {{flower.price}} Р</button>
                 </div>
             </div>
         </div>
