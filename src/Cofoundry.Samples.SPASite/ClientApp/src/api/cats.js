@@ -4,8 +4,11 @@ import axiosHelper from '@/api/axiosHelper'
 const BASE_URI = 'http://localhost:58139/api/flowers';
 
 export default {
-    searchCats(pageSize = 30,  pageNumber = 1) {
+    searchCats(pageSize = 30,  pageNumber = 1, categoryId = 0) {
         let url = BASE_URI + `?PageNumber=${pageNumber}&PageSize=${pageSize}`
+        if (categoryId != 0) {
+            url+=`&CategoryId=${categoryId}`
+        }
         return axios
             .get(url)
             .then(axiosHelper.handleQueryResponse);

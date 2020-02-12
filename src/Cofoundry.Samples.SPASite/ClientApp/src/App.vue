@@ -29,6 +29,11 @@ export default {
 
 <style lang="scss">
 
+@font-face {
+    font-family: 'TT Norms';
+    src: url('./assets/fonts/TTNorms/TTNorms-Regular.ttf');
+}
+
 html {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     line-height: 1.6;
