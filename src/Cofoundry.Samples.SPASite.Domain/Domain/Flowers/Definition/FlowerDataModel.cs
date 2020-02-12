@@ -28,7 +28,10 @@ namespace Cofoundry.Samples.SPASite.Domain
         public int? CategoryId { get; set; }
 
         [Display(Description = "Amount flowers")]
-        public string Count { get; set; }
+        public int Count { get; set; }
+
+        [Display(Description = "Price")]
+        public int Price { get; set; }
 
         [Display(Name = "Images", Description = "The top image will be the main image that displays in the grid")]
         [ImageCollection]

@@ -52,6 +52,8 @@ namespace Cofoundry.Samples.SPASite.Domain
             cat.Description = model.Description;
             cat.Category = await GetCategoryAsync(model.CategoryId);
             cat.Images = await GetImagesAsync(model.ImageAssetIds);
+            cat.Price = model.Price;
+            cat.Count = model.Count;
             return cat;
         }
 

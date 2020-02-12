@@ -12,5 +12,13 @@ namespace Cofoundry.Samples.SPASite.Domain
         : SimplePageableQuery
         , IQuery<PagedQueryResult<FlowerSummary>>
     {
+        public SearchFlowerSummariesQuery() { }
+
+        public SearchFlowerSummariesQuery(int id)
+        {
+            CategoryId = id;
+        }
+
+        public int CategoryId { get; set; }
     }
 }

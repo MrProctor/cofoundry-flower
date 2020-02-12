@@ -22,6 +22,8 @@ namespace Cofoundry.Samples.SPASite.Domain
 
         public int Count { get; set; }
 
+        public int Price { get; set; }
+
         public Category Category { get; set; }
 
         public ICollection<ImageAssetRenderDetails> Images { get; set; }

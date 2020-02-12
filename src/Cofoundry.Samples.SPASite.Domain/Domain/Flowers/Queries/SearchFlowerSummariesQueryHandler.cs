@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,15 +38,14 @@ namespace Cofoundry.Samples.SPASite.Domain
         {
             var customEntityQuery = new SearchCustomEntityRenderSummariesQuery();
             customEntityQuery.CustomEntityDefinitionCode = FlowerCustomEntityDefinition.DefinitionCode;
-            customEntityQuery.PageSize = query.PageSize = query.PageSize;
+            customEntityQuery.PageSize = query.PageSize;
             customEntityQuery.PageNumber = query.PageNumber;
             customEntityQuery.PublishStatus = PublishStatusQuery.Published;
             customEntityQuery.SortBy = CustomEntityQuerySortType.PublishDate;
-
             var FlowerCustomEntities = await _customEntityRepository.SearchCustomEntityRenderSummariesAsync(customEntityQuery);
             var allMainImages = await GetMainImages(FlowerCustomEntities);
 
-            return await MapFlowers(FlowerCustomEntities, allMainImages);
+            return await MapFlowers(FlowerCustomEntities, allMainImages, query.CategoryId);
         }
 
         private Task<IDictionary<int, ImageAssetRenderDetails>> GetMainImages(PagedQueryResult<CustomEntityRenderSummary> customEntityResult)
@@ -62,7 +62,7 @@ namespace Cofoundry.Samples.SPASite.Domain
 
         private async Task<PagedQueryResult<FlowerSummary>> MapFlowers(
             PagedQueryResult<CustomEntityRenderSummary> customEntityResult,
-            IDictionary<int, ImageAssetRenderDetails> images
+            IDictionary<int, ImageAssetRenderDetails> images, int categoryFilter
             )
         {
             var Flowers = new List<FlowerSummary>(customEntityResult.Items.Count());
@@ -76,12 +76,22 @@ namespace Cofoundry.Samples.SPASite.Domain
                 Flower.Name = customEntity.Title;
                 Flower.Description = model.Description;
                 Flower.Category = await GetCategoryAsync(model.CategoryId);
+                Flower.Price = model.Price;
+                Flower.Count = model.Count;
                 if (!EnumerableHelper.IsNullOrEmpty(model.ImageAssetIds))
                 {
                     Flower.MainImage = images.GetOrDefault(model.ImageAssetIds.FirstOrDefault());
                 }
 
-                Flowers.Add(Flower);
+                if (categoryFilter == 0)
+                {
+                    Flowers.Add(Flower);
+
+                }
+                else if (Flower.Category.CategoryId == categoryFilter)
+                {
+                    Flowers.Add(Flower);
+                }
             }
 
             return customEntityResult.ChangeType(Flowers);
