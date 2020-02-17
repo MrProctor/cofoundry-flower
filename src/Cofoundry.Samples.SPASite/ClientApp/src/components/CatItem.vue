@@ -22,13 +22,11 @@
 
 <script>
 import ImageAsset from "@/components/ImageAsset";
-import LikesCounter from "@/components/LikesCounter";
 
 export default {
     name: "CatItem",
     components: {
-        ImageAsset,
-        LikesCounter
+        ImageAsset
     },
     props: {
         flower: Object

@@ -51,7 +51,7 @@ export default {
             catsApi.searchCats().then(result => {
                 this.loading = false;
                 this.searchResult = result;
-            }).catch(x=> {
+            }).catch(()=> {
 
             });
         }

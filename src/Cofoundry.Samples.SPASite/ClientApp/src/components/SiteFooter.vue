@@ -1,13 +1,13 @@
 <template>
     <div class="wrapper">
-                <div class="info">
+        <div class="info">
             <div class="info-header">
                 Крупнейший оптовый поставщик цветов
             </div>
             <div class="info-blocks">
                 <div class="block">
                     <div class="block-image"><img style="margin-top: 16px;" src="../assets/flower.png"/></div>
-                    <div class="text">
+                    <div class="block-text">
                         Компания “Цветомир” - крупнейший оптовый поставщик цветов в России.
                          Предлагаем выгодные условия для сотрудничества владельцам цветочных бутиков,
                           флористам и тем, кто готов присоединиться к бизнесу.
@@ -15,7 +15,7 @@
                 </div>
                 <div class="block">
                     <div class="block-image"><img style="margin-top: 22px;margin-left: 6px;" src="../assets/truck.png"/></div>
-                    <div class="text">
+                    <div class="block-text">
                         Минимальный срок доставки в центральной части России – 1 сутки. В любую другую точку страны – 2 суток.
                          Это максимально короткие сроки, за которые физически можно сформировать,
                           обработать и направить заказчику партию цветов, используя авиасообщение.
@@ -23,7 +23,7 @@
                 </div>
                 <div class="block">
                     <div class="block-image"><img style="margin-top: 19px;margin-left: 6px;" src="../assets/devices.png"/></div>
-                    <div class="text">
+                    <div class="block-text">
                         В случае если Ваш банк поддерживает технологию безопасного проведения интернет-платежей
                          Verified By Visa или MasterCard Secure Code для проведения платежа также может потребоваться
                           ввод специального пароля.
@@ -67,60 +67,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-
-.info {
-    background: url("../assets/flower-background1.png") no-repeat;
-    padding-bottom: 110px;
-    background-size: cover;
-}
-
-.info-blocks {
-    display:flex;
-    flex-direction: row;
-    flex-grow: 1;
-    justify-content: space-around;
-}
-
-.info-header {
-    padding:60px 0 50px 0;
-    font-family: 'Playfair Display';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 40px;
-    text-align: center;
-    color: #323630;
-    width:450px;
-    margin: 0 auto;
-}
-
-.block-image {
-    border-radius: 100px;
-    background: #FE9C9C;
-    box-shadow: 0px 5px 15px rgba(139, 74, 74, 0.15);
-    border-radius: 100px;
-    width: 80px;
-    height: 80px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.block {
-    width:320px;
-}
-
-.block .text {
-    margin-top:20px;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
-    text-align: center;
-    color: #423737;
-}
-
+<style lang="scss">
 .wrapper {
     background: transparent;
     position: relative;

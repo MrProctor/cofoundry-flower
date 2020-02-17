@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import "~@/scss/index.scss";
 @font-face {
     font-family: 'TT Norms';
     src: url('./assets/fonts/TTNorms/TTNorms-Regular.ttf');

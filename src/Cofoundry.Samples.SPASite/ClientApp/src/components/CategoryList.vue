@@ -42,8 +42,8 @@ export default {
                     pageCount: result.pageCount,
                     totalItems: result.totalItems
                 }
-            }).catch(x=> {
-                console.log(x)
+            }).catch(()=> {
+
             });
         }
       }

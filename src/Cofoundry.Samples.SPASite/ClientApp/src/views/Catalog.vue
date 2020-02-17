@@ -67,15 +67,15 @@ export default {
                     pageCount: result.pageCount,
                     totalItems: result.totalItems
                 }
-            }).catch(x=> {
-                console.log(x)
+            }).catch(()=> {
+
             });
         },
 
         loadCategories() {
             categoriesApi.searchCategories().then(result => {
                 this.categoryList = result;
-            }).catch(x=> {
+            }).catch(()=> {
 
             });
         }

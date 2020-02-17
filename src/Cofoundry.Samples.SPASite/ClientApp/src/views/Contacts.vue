@@ -11,37 +11,37 @@
                         Предлагаем выгодные условия для сотрудничества владельцам цветочных бутиков, флористам и тем, кто готов присоединиться к бизнесу.</p>
                 </div>
             </div>
-            <div class="info-blocks">
+            <div class="info-blocks contacts">
                 <div class="block">
                     <div class="block-image"><img style="margin-top: 21px;" src="../assets/phone.png"/></div>
-                    <div class="header">
+                    <div class="block-header">
                         Позвонить нам
                     </div>
-                    <div class="text">
+                    <div class="block-text">
                         Вы можете позвонить нам по номеру: <strong>8 (937) 625-46-94</strong>
                     </div>
                 </div>
                 <div class="block">
                     <div class="block-image"><img style="margin-top: 27px;margin-left: -8px;" src="../assets/message.png"/></div>
-                    <div class="header">
+                    <div class="block-header">
                         Написать нам
                     </div>
-                    <div class="text">
+                    <div class="block-text">
                         Связаться с нами по электронной почте: <strong>info@cvetomir.ru</strong>
                     </div>
                 </div>
                 <div class="block">
                     <div style="width:80px;height:80px;margin:0 auto;"><img style="margin-top: -5px;" src="../assets/target.png"/></div>
-                    <div class="header">
+                    <div class="block-header">
                         Головной офис
                     </div>
-                    <div class="text">
+                    <div class="block-text">
                         Головной офис в городе Ижевске находится по адресу: <strong>Ижевск, ул. Новоажимова, 13</strong> 
                         <p>Схема проезда</p>
                     </div>
                 </div>
             </div>
-            <div style="background:#F6F7F8;margin-top: -10px;"><img src="../assets/hero-contacts.png" /></div>
+            <div style="background:#F6F7F8;margin-top: -50px;"><img src="../assets/hero-contacts.png" /></div>
         </div>
 
         <div class="company-story">
@@ -61,6 +61,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.contacts {
+    margin-top:40px;
+}
+
 .hero {
     padding: 0 2rem 0 2rem;
     color: #AE9999;
@@ -78,7 +83,7 @@ export default {
 }
 
 .up-block {
-        display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
